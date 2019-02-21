@@ -27,6 +27,9 @@ public class GeneralResult implements Serializable {
 	/** 结果消息 **/
 	private String message;
 	
+	/** 防止重复提交的Token **/
+	private String token;
+	
 	/** 结果数据 **/
 	private Object result;
 	
@@ -82,4 +85,11 @@ public class GeneralResult implements Serializable {
 		this.result = result;
 	}
 
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
 }

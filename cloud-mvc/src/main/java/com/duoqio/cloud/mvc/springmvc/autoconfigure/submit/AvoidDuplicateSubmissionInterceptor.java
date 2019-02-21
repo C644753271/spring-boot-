@@ -57,7 +57,8 @@ public class AvoidDuplicateSubmissionInterceptor extends HandlerInterceptorAdapt
 		boolean checkAndUpdateToken = annotation.checkAndUpdateToken();
 		if(needSaveSession == true) {
 			//创建口令
-			request.getSession(false).setAttribute("token", UUID.randomUUID().toString());
+			//request.getSession(false).setAttribute("token", UUID.randomUUID().toString());
+			WebUtils.setSessionAttribute(request, "token", UUID.randomUUID().toString());
 		}else if(needRemoveSession == true) {
 			//移除口令
 			if(!isValidSubmit(request)){

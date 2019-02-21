@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<!-- 定义父项目的信息 -->
+	<parent>
+		<groupId>com.duoqio.cloud</groupId>
+		<artifactId>cloud-master</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	
+	<!-- 定义本项目的信息 -->
+	<artifactId>cloud-mvc</artifactId>
+	<name>cloud-mvc</name>
+	
+	<!-- 定义项目依赖 -->
+	<dependencies>
+		<!-- 定义mvc的依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- 如果在本项目编译时需要去除掉该部分 -->
+			<exclusions>
+	        	<exclusion>
+		          <groupId>org.springframework.boot</groupId>
+		          <artifactId>spring-boot-starter-tomcat</artifactId>
+		        </exclusion>
+		    </exclusions>
+		    <version>${springboot.version}</version>
+		</dependency>
+		
+		<!-- 引入工具类 -->
+		<dependency>
+		   <groupId>org.projectlombok</groupId>
+		   <artifactId>lombok</artifactId>
+		</dependency>
+		
+		<!-- spring test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${springboot.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- 引入Servlet API -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <scope>provided</scope>
+		</dependency>
+		
+		<!-- 引入核心模块 -->
+		<dependency>
+			<groupId>com.duoqio.cloud</groupId>
+			<artifactId>cloud-core</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<!-- 引入容器模块 -->
+		<dependency>
+			<groupId>com.duoqio.cloud</groupId>
+			<artifactId>cloud-container</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- 引入swagger依赖 -->
+		<dependency>
+		    <groupId>com.spring4all</groupId>
+		    <artifactId>swagger-spring-boot-starter</artifactId>
+		    <version>1.8.0.RELEASE</version>
+		</dependency>
+		
+	</dependencies>
+	
+	<!-- 定义编译 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+	                <execution>
+	                    <goals>
+	                        <goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
+	                    </goals>
+	                    <!--可以生成不含依赖包的不可执行Jar包-->
+	                    <!-- configuration>
+	                      <classifier>exec</classifier>
+	                    </configuration> -->
+	                </execution>
+	            </executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>

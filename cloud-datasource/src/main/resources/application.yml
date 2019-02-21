@@ -1,0 +1,8 @@
+# 配置数据库连接的基本信息
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://duoqiyuan.mysql.rds.aliyuncs.com:3306/db_201706_hundredyear_zhang?zeroDateTimeBehavior=convertToNull&autoReconnect=true
+    username: dqo_hundredyear
+    password: Dqo_hundredyear
+    type: com.zaxxer.hikari.HikariDataSource

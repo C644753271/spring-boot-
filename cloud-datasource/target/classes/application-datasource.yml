@@ -1,0 +1,8 @@
+# 配置数据库连接的基本信息
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://duoqiyuan.mysql.rds.aliyuncs.com:3306/db_1810_addoil?zeroDateTimeBehavior=convertToNull&autoReconnect=true
+    username: dqo_1810_addoil
+    password: Dqo_1810_addoil
+    type: com.zaxxer.hikari.HikariDataSource

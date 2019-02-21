@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active:
+    - datasource
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

@@ -1,0 +1,151 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<!-- 定义父项目依赖 -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.6.RELEASE</version>
+	</parent>
+	
+	<!-- 定义本项目的信息 -->
+	<groupId>com.duoqio.cloud</groupId>
+	<artifactId>cloud-master</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>cloud-master</name>
+	
+	<!-- 定义属性 -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<!-- maven编译插件的版本 -->
+		<maven.build.version>3.7.0</maven.build.version>
+		<!-- Spring boot版本 -->
+		<springboot.version>2.0.6.RELEASE</springboot.version>
+		<!-- 工具类的版本 -->
+		<lombok.version>1.18.4</lombok.version>
+		<!-- mybatis-plus的版本 -->
+		<mybatis-plus.version>2.3</mybatis-plus.version>
+	</properties>
+	
+	<!-- 定义项目依赖jar包管理器 -->
+	<dependencyManagement>
+		<!-- 定义依赖 -->
+		<dependencies>
+			<!-- spring boot jdbc start -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-jdbc</artifactId>
+			</dependency>
+			<!-- spring boot jdbc end -->
+			<!-- spring boot test start -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<scope>test</scope>
+			</dependency>
+			<!-- spring boot test end -->
+			<!-- Spring boot jpa start -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-jpa</artifactId>
+			</dependency>
+			<!-- spring boot jpa end -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+			</dependency>
+			<!-- mybatis-plus start -->
+			<dependency>
+			    <groupId>com.baomidou</groupId>
+			    <artifactId>mybatis-plus-boot-starter</artifactId>
+			</dependency>
+			<!-- mybatis-plus end -->
+			<!-- spring boot redis start -->
+			<dependency>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-starter-data-redis</artifactId>
+			</dependency>
+			<!-- spring boot redis end -->
+			<!-- spring boot mongodb start -->
+			<dependency>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-starter-data-mongodb</artifactId>
+			</dependency>
+			<!-- spring boot mongodb end -->
+			<!-- spring boot quartz start -->
+			<dependency>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-starter-quartz</artifactId>
+			</dependency>
+			<!-- spring boot quartz end -->
+			
+			<!-- 日志工具类  start-->
+			<dependency>
+			   <groupId>org.projectlombok</groupId>
+			   <artifactId>lombok</artifactId>
+			   <version>${lombok.version}</version>
+			</dependency>
+			<!-- 日志工具类  end-->
+		</dependencies>
+	</dependencyManagement>
+	
+	
+	<build>
+		<!-- 定义编译的管理器 -->
+		<pluginManagement>
+			<plugins>
+				<!-- 保证所有编译的子项目都是使用的java8 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<!-- 
+					指定该Main Class为全局的唯一入口
+					<configuration>
+		                <mainClass>com.duoqio.cloud.CloudProject</mainClass>
+		                <layout>ZIP</layout>
+		            </configuration>
+		             -->
+					<executions>
+		                <execution>
+		                    <goals>
+		                        <goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
+		                    </goals>
+		                    <!--可以生成不含依赖包的不可执行Jar包-->
+		                    <!-- configuration>
+		                      <classifier>exec</classifier>
+		                    </configuration> -->
+		                </execution>
+		            </executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<modules>
+		<module>cloud-datasource</module>
+		<module>cloud-orm</module>
+		<module>cloud-mybatis</module>
+		<module>cloud-mvc</module>
+		<module>cloud-core</module>
+		<module>cloud-container</module>
+		<module>cloud-redis</module>
+		<module>cloud-mongodb</module>
+		<module>cloud-quartz</module>
+		<module>cloud-jcache</module>
+		<!-- <module>cloud-entity</module> -->
+		<module>cloud-oil-entity</module>
+		<module>cloud-oil-project</module>
+	</modules>
+</project>

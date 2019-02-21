@@ -1,0 +1,6 @@
+server:
+  port: 9091
+  tomcat:
+    max-connections: 10000 #设置最大连接数，默认是10000
+    max-threads: 1000 #设置最大并发数，默认是200
+    

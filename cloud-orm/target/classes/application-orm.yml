@@ -1,0 +1,7 @@
+# 配置jpa的相关属性
+spring:
+  jpa:
+    show-sql: true
+  profiles:
+    active:
+    - datasource

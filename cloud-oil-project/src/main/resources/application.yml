@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active:
+    - datasource
+    - mvc
+    - core
+    - container
+    - ehcache
+    - orm

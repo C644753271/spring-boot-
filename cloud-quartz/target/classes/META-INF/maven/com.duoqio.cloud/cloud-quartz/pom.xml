@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<!-- 定义父项目的信息 -->
+	<parent>
+		<groupId>com.duoqio.cloud</groupId>
+		<artifactId>cloud-master</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	
+	<!-- 定义本项目的信息 -->
+	<artifactId>cloud-quartz</artifactId>
+	<name>cloud-quartz</name>
+	
+	<!-- 定义项目的依赖 -->
+	<dependencies>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-quartz</artifactId>
+		    <version>${springboot.version}</version>
+		</dependency>
+		<!-- 引入工具类 -->
+		<dependency>
+		   <groupId>org.projectlombok</groupId>
+		   <artifactId>lombok</artifactId>
+		</dependency>
+		<!-- 引入数据源的相关信息 -->
+		<dependency>
+			<groupId>com.duoqio.cloud</groupId>
+			<artifactId>cloud-datasource</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	
+		<!-- 定义编译 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+	                <execution>
+	                    <goals>
+	                        <goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
+	                    </goals>
+	                    <!--可以生成不含依赖包的不可执行Jar包-->
+	                    <!-- configuration>
+	                      <classifier>exec</classifier>
+	                    </configuration> -->
+	                </execution>
+	            </executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>
